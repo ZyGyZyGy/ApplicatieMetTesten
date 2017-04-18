@@ -16,6 +16,21 @@ public class RekeningTest {
 	rekening = new Rekening();
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void hetBedragVanEenStortingMagNietNulZijn() {
+	rekening.storten(BigDecimal.ZERO);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void hetBedragVanEenStortingMagNietNegatiefZijn() {
+	rekening.storten(BigDecimal.valueOf(-1));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void hetBedragVanEenStortingMagNietNullZijn() {
+	rekening.storten(null);
+    }
+
     @Test
     public void hetSaldoVanEenNieuweRekeningIsNul() {
 	assertEquals(0, BigDecimal.ZERO.compareTo(rekening.getSaldo()));

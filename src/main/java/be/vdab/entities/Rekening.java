@@ -7,24 +7,14 @@ public class Rekening {
     private BigDecimal saldo = BigDecimal.ZERO;
 
     public void storten(BigDecimal bedrag) {
+	if (bedrag.compareTo(BigDecimal.ZERO) <= 0) {
+	    throw new IllegalArgumentException("Bedrag moet positief zijn");
+	}
 	saldo = saldo.add(bedrag);
     }
 
     public BigDecimal getSaldo() {
 	return saldo;
     }
-
-    
-    
-    
-    // eerst test case + tests schrijven (met minimale implementatie in de te testen class)
-    
-    // public void storten(BigDecimal bedrag) { 
-    // throw new UnsupportedOperationException();
-    // }
-    //
-    // public BigDecimal getSaldo() {
-    // throw new UnsupportedOperationException();
-    // }
 
 }
