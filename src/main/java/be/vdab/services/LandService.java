@@ -2,6 +2,7 @@ package be.vdab.services;
 
 import java.math.BigDecimal;
 
+import be.vdab.entities.Land;
 import be.vdab.repositories.LandRepository;
 
 public class LandService {
@@ -13,7 +14,9 @@ public class LandService {
     }
 
     public BigDecimal findVerhoudingOppervlakteLandTovOppervlakteAlleLanden(String landcode) {
-	throw new UnsupportedOperationException();
+	Land land = landRepository.read(landcode);
+	int oppervlakteAlleLanden = landRepository.findOppervlakteAlleLanden();
+	return new BigDecimal(land.getOppervlakte()).divide(BigDecimal.valueOf(oppervlakteAlleLanden));
     }
 
 }
