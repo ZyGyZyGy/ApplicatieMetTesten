@@ -28,4 +28,6 @@ public class StatistiekTest {
 	Statistiek.getGemiddelde(null);
     }
     
+    
+    
 }
